@@ -10,3 +10,14 @@
         name:  apache2 
         update_cache:  yes 
         state:  latest
+    - name: 'Copy manual SAP config XML to server'
+      copy:
+        src: ../templates/index.html.j2
+        dest: /var/www/html/index.html
+    
+    - name: 'Replace SAPSID with actual SAP SID'
+      ansible.builtin.replace:
+        path: /tmp/cl_sap_manual_config_NFS.xml
+        regexp: 'SAPSID'
+        replace: '{{ sid | upper }}'
+      when: inventory_hostname == primary_hostname
