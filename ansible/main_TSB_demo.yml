@@ -10,8 +10,22 @@
         name:  apache2 
         update_cache:  yes 
         state:  latest
-        
-    - debug: msg="{{ lookup('env') }} "
+
+    - name: Show SAP_SID variable
+      ansible.builtin.debug:
+      msg: "'{{ lookup('ansible.builtin.env', 'SAP_SID') }}' is the SAP_SID environment variable."
+          
+    - name: Show SAP_RELEASE variable
+      ansible.builtin.debug:
+      msg: "'{{ lookup('ansible.builtin.env', 'SAP_RELEASE') }}' is the SAP_RELEASE environment variable."
+      
+    - name: Show SAP_HA variable
+      ansible.builtin.debug:
+      msg: "'{{ lookup('ansible.builtin.env', 'SAP_HA') }}' is the SAP_HA environment variable."    
+      
+    - name: Show DB_HA variable
+      ansible.builtin.debug:
+      msg: "'{{ lookup('ansible.builtin.env', 'DB_HA') }}' is the DB_HA environment variable."
     
     - name: 'Copy page template to server'
       copy:
