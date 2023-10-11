@@ -6,7 +6,7 @@
   gather_facts: true
   tasks:
     - debug: 'echo hostname'
-        msg: debug: var={{ansible_hostname}}
+        var: {{ansible_hostname}}
     #-
     #  name: 'Database installation'
     #  include_role:
