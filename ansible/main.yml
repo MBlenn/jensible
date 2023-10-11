@@ -3,16 +3,17 @@
   hosts: all
   become: yes
   remote_user: ansible
-  #vars_files: ../vars/variables.yaml
   gather_facts: true
   tasks:
-    -
-      name: 'Database installation'
-      include_role:
-        name: hana_install
+    - debug: 'echo hostname'
+        msg: debug: var={{ansible_hostname}}
+    #-
+    #  name: 'Database installation'
+    #  include_role:
+    #    name: hana_install
       #when: vars.DBtype == "HANA"
-    -
-      name: 'Database high availibility'
-      include_role:
-        name: hana_hsr
-      #when: vars.DBtype == "HANA" and vars.DB_HA == true
+    #-
+    #  name: 'Database high availibility'
+    #  include_role:
+    #    name: hana_hsr
+    #  #when: vars.DBtype == "HANA" and vars.DB_HA == true
