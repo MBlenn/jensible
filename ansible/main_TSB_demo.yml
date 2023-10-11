@@ -1,0 +1,10 @@
+- 
+  name: 'Demo for TSB team'
+  hosts: all
+  become: yes
+  remote_user: ansible
+  #vars_files: ../vars/variables.yaml
+  gather_facts: true
+  tasks:
+    - name: install apache2
+        apt: name=apache2 update_cache=yes state=latest
