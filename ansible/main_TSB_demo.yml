@@ -49,7 +49,7 @@
         src: templates/index.html.j2
         dest: /var/www/html/index.html.j2
         
-    - name: Install custom SAP facts
+    - name: Create page from template
       ansible.builtin.template:
         src: "/var/www/html/index.html.j2"
         dest: "/var/www/html/index.html"
