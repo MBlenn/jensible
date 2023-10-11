@@ -47,10 +47,17 @@
     - name: 'Copy page template to server'
       copy:
         src: templates/index.html.j2
-        dest: /var/www/html/index.html
-    
-    - name: 'Update J2SAP_SID with actual SAP SID'
-      ansible.builtin.replace:
-        path: /var/www/html/index.html
-        regexp: 'J2SAP_SID'
-        replace: '{{ SAP_SID }}'
+        dest: /var/www/html/index.html.j2
+        
+    - name: Install custom SAP facts
+      ansible.builtin.template:
+        src: "/var/www/html/index.html.j2"
+        dest: "/var/www/html/index.html"
+        force: yes
+        mode: 0644
+
+    #- name: 'Update J2SAP_SID with actual SAP SID'
+    #  ansible.builtin.replace:
+    #    path: /var/www/html/index.html
+    #    regexp: 'J2SAP_SID'
+    #    replace: '{{ SAP_SID }}'
