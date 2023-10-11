@@ -34,9 +34,9 @@
     - name: Assign internal variables from env variables
       ansible.builtin.set_fact:
         SAPsid: "{{ lookup('env', 'SAP_SID') }}"
-        DBha: "{{ lookup('env', 'SB_HA') }}"
-        SAPha: "{{ lookup('env', 'SAP_HA') }}"
-        SAPrelease: "{{ lookup('env', 'SAP_SID') }}"
+        DBha: "{{ lookup('env', 'SB_HA', default=false) }}"
+        SAPha: "{{ lookup('env', 'SAP_HA', default=false) }}"
+        SAPrelease: "{{ lookup('env', 'SAP_RELEASE') }}"
         MasterPW: "{{ lookup('env', 'MASTER_PW') }}"
       delegate_to: localhost
 
