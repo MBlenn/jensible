@@ -5,8 +5,9 @@
   remote_user: ansible
   gather_facts: true
   tasks:
-    - debug: 'echo hostname'
-        var: '{{ansible_hostname}}'
+    - name: 'echo hostname'
+      debug: var={{ansible_hostname}}
+
     #-
     #  name: 'Database installation'
     #  include_role:
