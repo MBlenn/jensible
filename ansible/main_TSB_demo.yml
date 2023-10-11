@@ -5,11 +5,13 @@
   remote_user: ansible
   gather_facts: true
   tasks:
-    - name: install apache2
+    - name: Install apache2
       apt: 
         name:  apache2 
         update_cache:  yes 
         state:  latest
+    - debug: msg="{{ lookup('env') }} "
+    
     - name: 'Copy manual SAP config XML to server'
       copy:
         src: templates/index.html.j2
