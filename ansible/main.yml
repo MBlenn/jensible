@@ -1,6 +1,6 @@
 - 
   name: 'SAP NetWeaver automation'
-  hosts: dbPrimary
+  hosts: dbServers
   become: yes
   remote_user: ansible
   gather_facts: true
