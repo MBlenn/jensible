@@ -1,6 +1,15 @@
 - 
   name: 'SAP NetWeaver automation'
-  hosts: all
+  hosts: dbPrimary
+  become: yes
+  remote_user: ansible
+  gather_facts: true
+  tasks:
+    - name: 'echo hostname'
+      debug: var=ansible_facts['nodename']
+- 
+  name: 'SAP NetWeaver automation'
+  hosts: SAPascs
   become: yes
   remote_user: ansible
   gather_facts: true
